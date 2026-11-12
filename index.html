@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daud Butt — Systems Administrator & DevOps</title>
+<meta name="description" content="Daud Ahmed Butt — DevOps-focused Systems Administrator in Dublin, Ireland. Terraform, Ansible, Jenkins and ~1,000 VMs across multiple clouds.">
+<meta property="og:title" content="Daud Butt — Systems Administrator & DevOps">
+<meta property="og:description" content="Terraform, Ansible, Jenkins and ~1,000 VMs across multiple clouds. Dublin, Ireland.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230b0f14'/><text x='50%' y='58%' text-anchor='middle' dominant-baseline='middle' font-family='monospace' font-weight='700' font-size='30' fill='%2334d399'>&gt;_</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f7f9; --bg-2:#ffffff; --panel:#ffffff; --line:#e3e7ec; --text:#0f172a; --muted:#5b6574;
+  --accent:#059669; --accent-2:#0284c7; --accent-soft:rgba(5,150,105,.10); --grid:rgba(15,23,42,.05);
+  --shadow:0 1px 2px rgba(15,23,42,.04),0 8px 24px rgba(15,23,42,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b0f14; --bg-2:#0f151c; --panel:#111922; --line:#1e2a36; --text:#e6edf3; --muted:#8b98a7;
+    --accent:#34d399; --accent-2:#38bdf8; --accent-soft:rgba(52,211,153,.10); --grid:rgba(148,163,184,.06);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0b0f14; --bg-2:#0f151c; --panel:#111922; --line:#1e2a36; --text:#e6edf3; --muted:#8b98a7;
+  --accent:#34d399; --accent-2:#38bdf8; --accent-soft:rgba(52,211,153,.10); --grid:rgba(148,163,184,.06);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:"Space Grotesk",system-ui,sans-serif; line-height:1.6; font-size:17px;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:44px 44px; background-position:-1px -1px;
+}
+a{color:inherit}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+@media (max-width:600px){.wrap{padding:0 16px}}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
+.logo{font-family:"JetBrains Mono",monospace;font-weight:700;text-decoration:none;font-size:15px}
+.logo span{color:var(--accent)}
+.links{display:flex;gap:22px;align-items:center}
+.links a{text-decoration:none;color:var(--muted);font-size:14px;font-family:"JetBrains Mono",monospace;transition:color .15s}
+.links a:hover{color:var(--accent)}
+.theme{background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;width:34px;height:34px;cursor:pointer;display:grid;place-items:center}
+.theme:hover{color:var(--accent);border-color:var(--accent)}
+@media (max-width:720px){.links a.hide-sm{display:none}}
+
+/* hero */
+.hero{padding:88px 0 72px;position:relative}
+.hero::before{content:"";position:absolute;inset:-120px 0 auto;height:520px;pointer-events:none;
+  background:radial-gradient(600px 300px at 15% 30%,var(--accent-soft),transparent 70%),radial-gradient(500px 260px at 85% 10%,rgba(56,189,248,.08),transparent 70%)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;position:relative}
+@media (max-width:880px){.hero-grid{grid-template-columns:1fr;gap:36px}.hero{padding:56px 0 48px}}
+.status{display:inline-flex;align-items:center;gap:8px;font-family:"JetBrains Mono",monospace;font-size:13px;
+  color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);background:var(--accent-soft);
+  padding:5px 12px;border-radius:999px;margin-bottom:22px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 60%,transparent)}70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
+h1{font-size:clamp(42px,7vw,72px);line-height:1.02;letter-spacing:-.03em;font-weight:700}
+h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.role{font-family:"JetBrains Mono",monospace;color:var(--muted);margin:18px 0 22px;font-size:15px;min-height:24px}
+.role .typed{color:var(--text)}
+.caret{display:inline-block;width:9px;height:18px;background:var(--accent);vertical-align:-3px;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.lead{color:var(--muted);max-width:540px;font-size:18px}
+.cta{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;font-size:15px;padding:12px 18px;border-radius:10px;border:1px solid var(--line);background:var(--panel);transition:transform .15s,border-color .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--shadow)}
+.btn.primary{background:var(--accent);color:#04120c;border-color:var(--accent)}
+.btn svg{width:17px;height:17px}
+
+/* terminal */
+.term{background:#0a0e13;border:1px solid #1e2a36;border-radius:14px;box-shadow:var(--shadow);overflow:hidden;font-family:"JetBrains Mono",monospace;font-size:13.5px;color:#c9d4df}
+.term-bar{display:flex;align-items:center;gap:7px;padding:11px 14px;border-bottom:1px solid #1a242f;background:#0d131a}
+.term-bar i{width:11px;height:11px;border-radius:50%;display:block}
+.term-bar i:nth-child(1){background:#ff5f57}.term-bar i:nth-child(2){background:#febc2e}.term-bar i:nth-child(3){background:#28c840}
+.term-bar span{margin-left:auto;color:#6b7785;font-size:12px}
+.term-body{padding:16px 18px 18px;min-height:268px;white-space:pre-wrap;word-break:break-word}
+.p{color:#34d399}.c{color:#38bdf8}.k{color:#6b7785}.ok{color:#34d399}.w{color:#e6edf3}
+
+/* sections */
+section{padding:72px 0}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:36px}
+.sec-head .n{font-family:"JetBrains Mono",monospace;color:var(--accent);font-size:14px}
+h2{font-size:clamp(28px,4vw,38px);letter-spacing:-.02em;line-height:1.1}
+.sec-head .rule{flex:1;height:1px;background:var(--line);transform:translateY(-6px)}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media (max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+.stat b{display:block;font-size:34px;letter-spacing:-.02em;line-height:1.1}
+.stat span{color:var(--muted);font-size:14px}
+
+.about{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:32px}
+@media (max-width:760px){.about{grid-template-columns:1fr}}
+.about p{color:var(--muted);font-size:17.5px}
+.about p strong{color:var(--text);font-weight:600}
+
+/* timeline */
+.timeline{position:relative;padding-left:30px}
+.timeline::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--accent),var(--accent-2),var(--line))}
+.job{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin-bottom:18px;transition:border-color .2s,transform .2s}
+.job:hover{border-color:color-mix(in srgb,var(--accent) 55%,var(--line));transform:translateX(3px)}
+.job::before{content:"";position:absolute;left:-30px;top:28px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--accent)}
+.job-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.job h3{font-size:21px;letter-spacing:-.01em}
+.when{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--accent);background:var(--accent-soft);padding:3px 10px;border-radius:6px;white-space:nowrap}
+.org{color:var(--muted);font-size:15px;margin:2px 0 14px}
+.job ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 24px}
+@media (max-width:760px){.job ul{grid-template-columns:1fr}.job{padding:20px}}
+.job li{position:relative;padding-left:18px;font-size:15.5px;color:var(--muted)}
+.job li::before{content:"›";position:absolute;left:0;color:var(--accent);font-weight:700}
+.job li strong{color:var(--text);font-weight:500}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media (max-width:1000px){.skills{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:880px){.skills{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.skills{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.card h4{font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:500;color:var(--accent);margin-bottom:14px;text-transform:uppercase;letter-spacing:.06em;display:flex;align-items:center;gap:8px}
+.card h4 svg{width:16px;height:16px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font-size:13.5px;padding:5px 10px;border-radius:7px;border:1px solid var(--line);background:var(--bg-2);font-family:"JetBrains Mono",monospace}
+
+/* edu */
+.edu{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:760px){.edu{grid-template-columns:1fr}}
+.edu .card{display:flex;gap:16px;align-items:flex-start}
+.badge{flex:none;width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font-family:"JetBrains Mono",monospace;font-weight:700;font-size:14px}
+.edu h5{font-size:17px;margin-bottom:2px}
+.edu p{color:var(--muted);font-size:14.5px}
+
+/* contact */
+.contact{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:48px;text-align:center;position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;inset:0;background:radial-gradient(500px 200px at 50% 0%,var(--accent-soft),transparent 70%);pointer-events:none}
+.contact h2{margin-bottom:12px;position:relative}
+.contact p{color:var(--muted);max-width:520px;margin:0 auto 26px;position:relative}
+.contact .cta{justify-content:center;position:relative}
+@media (max-width:600px){.contact{padding:32px 20px}}
+footer{padding:36px 0 48px;color:var(--muted);font-size:13px;font-family:"JetBrains Mono",monospace;text-align:center}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .dot,.caret{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="logo">daud<span>@</span>dublin<span>:~$</span></a>
+    <div class="links">
+      <a href="#about" class="hide-sm">about</a>
+      <a href="#experience" class="hide-sm">experience</a>
+      <a href="#skills" class="hide-sm">skills</a>
+      <a href="#contact">contact</a>
+      <button class="theme" id="themeBtn" aria-label="Toggle colour theme">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="status"><span class="dot"></span>all systems operational · open to opportunities</div>
+      <h1>Daud Ahmed<br><span class="grad">Butt</span></h1>
+      <div class="role mono"><span class="p">&gt;</span> <span class="typed" id="typed"></span><span class="caret"></span></div>
+      <p class="lead">DevOps-focused Systems Administrator in Dublin. I run ~1,000 VMs across 9+ cloud providers and automate them with Terraform, Ansible and Jenkins.</p>
+      <div class="cta">
+        <a class="btn primary" href="#contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>Get in touch</a>
+        <a class="btn" href="https://www.linkedin.com/in/1daud1/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 21 11.2 21 14.5V21h-4v-5.8c0-1.4-.03-3.2-1.95-3.2-1.95 0-2.25 1.5-2.25 3.1V21H9z"/></svg>LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="term" aria-label="Terminal summary">
+      <div class="term-bar"><i></i><i></i><i></i><span>~/daud — zsh</span></div>
+      <div class="term-body" id="term"></div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="n">01.</span><h2>About</h2><span class="rule"></span></div>
+    <div class="about reveal">
+<!-- CV:ABOUT:START (generated from the Word CV by scripts/update.sh, do not edit by hand) -->
+      <p><strong>DevOps-focused Systems Administrator</strong> with 5+ years&#x27; experience running Linux infrastructure at scale. Took a ~1,000-VM estate across 9+ cloud providers, including AWS, GCP, Azure and Hetzner, from hand-run Ansible scripts to automated Terraform, Ansible and Jenkins pipelines with security scanning on every push. Also manages Microsoft 365, Intune/Autopilot and security monitoring, with a focus on growing into DevOps and platform engineering.</p>
+<!-- CV:ABOUT:END -->
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><b id="yrs">5+</b><span>years in IT</span></div>
+      <div class="stat"><b>~1,000</b><span>VMs managed</span></div>
+      <div class="stat"><b>9+</b><span>cloud providers</span></div>
+      <div class="stat"><b>100%</b><span>pushes security-scanned</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="n">02.</span><h2>Experience</h2><span class="rule"></span></div>
+    <div class="timeline">
+<!-- CV:EXPERIENCE:START (generated from the Word CV by scripts/update.sh, do not edit by hand) -->
+      <article class="job reveal">
+        <div class="job-top"><h3>Senior System Administrator</h3><span class="when">Nov 2022 — Present</span></div>
+        <div class="org">Topsec Cloud Solutions · Dublin</div>
+        <ul>
+          <li>Introduced <strong>Terraform</strong> to provision infrastructure stacks for new product launches, moving builds from Ansible scripts to reusable, version-controlled infrastructure code</li>
+          <li>Built <strong>Jenkins CI/CD pipelines</strong> that run secure code scans on every push and handle deployments automatically</li>
+          <li>Migrated <strong>Ansible</strong> from manually run playbooks to Jenkins-driven deployments, and refactored and extended the codebase to make releases repeatable and auditable</li>
+          <li>Manage <strong>~1,000 Linux and Windows VMs</strong> across 9+ cloud providers, including AWS, GCP, Azure, Hetzner, Linode and UpCloud, hosting multiple production applications including the company&#x27;s <strong>Phishing-as-a-Service</strong> platform</li>
+          <li>Led the move to <strong>Intune and Autopilot</strong>, migrating all users from local profiles to Entra-joined, centrally managed devices, and brought the full Microsoft 365 tenant under policy control</li>
+          <li>Deployed <strong>Action1</strong> for automated patching and device management across the endpoint estate</li>
+          <li>Configured <strong>WireGuard VPN</strong> for secure internal access, and maintain internal and external DNS</li>
+          <li>Monitor the full VM estate with <strong>Icinga and Grafana</strong>, centralise logging with <strong>Graylog and Elasticsearch</strong>, and run <strong>Wazuh SIEM/XDR</strong>; support ISO 27001 audits and controls</li>
+        </ul>
+      </article>
+      <article class="job reveal">
+        <div class="job-top"><h3>Lead Technical Support Engineer</h3><span class="when">Jul 2021 — Nov 2022</span></div>
+        <div class="org">Topsec Cloud Solutions · Dublin</div>
+        <ul>
+          <li>Led service desk operations and acted as escalation point for high-priority incidents across M365, networking, email and security</li>
+          <li>Managed email authentication (SPF, DKIM, DMARC), DNS hosting and domain registrations for client environments</li>
+          <li>Deployed and managed firewalls and endpoint security across client sites</li>
+          <li>Designed and ran security awareness and phishing simulation campaigns (SCORM)</li>
+        </ul>
+      </article>
+      <article class="job reveal">
+        <div class="job-top"><h3>IT Support Engineer — Level 2</h3><span class="when">Jan 2021 — Jul 2021</span></div>
+        <div class="org">Lantech IT Services · Dublin</div>
+        <ul>
+          <li>Delivered onsite and remote L2 support across multiple client environments</li>
+          <li>Managed Active Directory, Group Policy and domain migrations; maintained Windows Server and VMware hosts</li>
+          <li>Supported Microsoft 365, Azure and Google Workspace migrations</li>
+          <li>Configured Layer 3 networking, firewalls and backup/disaster recovery systems</li>
+        </ul>
+      </article>
+<!-- CV:EXPERIENCE:END -->
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="n">03.</span><h2>Stack</h2><span class="rule"></span></div>
+    <div class="skills">
+<!-- CV:SKILLS:START (generated from the Word CV by scripts/update.sh, do not edit by hand) -->
+      <div class="card reveal"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg>DevOps &amp; IaC</h4>
+        <div class="chips"><span class="chip">Terraform</span><span class="chip">Ansible</span><span class="chip">Jenkins</span><span class="chip">CI/CD</span><span class="chip">secure code scanning</span><span class="chip">Git</span></div></div>
+      <div class="card reveal"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19a4.5 4.5 0 1 0-1.4-8.8A6 6 0 1 0 6 17.7"/><path d="M6 19h11.5"/></svg>Cloud</h4>
+        <div class="chips"><span class="chip">AWS</span><span class="chip">GCP</span><span class="chip">Azure</span><span class="chip">Hetzner</span><span class="chip">Linode</span><span class="chip">UpCloud</span></div></div>
+      <div class="card reveal"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 17 6-5-6-5M12 19h8"/></svg>Systems</h4>
+        <div class="chips"><span class="chip">Linux (primary)</span><span class="chip">Windows Server</span><span class="chip">VMware</span><span class="chip">Active Directory</span><span class="chip">Group Policy</span></div></div>
+      <div class="card reveal"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 17 6-5-6-5M12 19h8"/></svg>Scripting</h4>
+        <div class="chips"><span class="chip">Bash</span><span class="chip">Python</span><span class="chip">YAML</span><span class="chip">PowerShell</span></div></div>
+      <div class="card reveal"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="5" width="16" height="11" rx="1"/><path d="M2 19h20"/></svg>Microsoft 365 &amp; Endpoint</h4>
+        <div class="chips"><span class="chip">Entra ID</span><span class="chip">Intune</span><span class="chip">Autopilot</span><span class="chip">Exchange Online</span><span class="chip">Defender</span><span class="chip">SharePoint</span><span class="chip">Action1</span></div></div>
+      <div class="card reveal"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v6c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5z"/></svg>Security &amp; Monitoring</h4>
+        <div class="chips"><span class="chip">Wazuh SIEM/XDR</span><span class="chip">Elasticsearch</span><span class="chip">Graylog</span><span class="chip">Grafana</span><span class="chip">Icinga</span><span class="chip">MFA/Conditional Access</span><span class="chip">SPF/DKIM/DMARC</span><span class="chip">ISO 27001</span></div></div>
+      <div class="card reveal"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v5M12 12l-6 5M12 12l6 5"/></svg>Networking</h4>
+        <div class="chips"><span class="chip">TCP/IP</span><span class="chip">WireGuard</span><span class="chip">DNS</span><span class="chip">DHCP</span><span class="chip">routing &amp; switching</span><span class="chip">firewalls</span></div></div>
+      <div class="card reveal"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>Databases</h4>
+        <div class="chips"><span class="chip">MySQL</span><span class="chip">MariaDB</span><span class="chip">PostgreSQL</span><span class="chip">MongoDB</span></div></div>
+<!-- CV:SKILLS:END -->
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="n">04.</span><h2>Education</h2><span class="rule"></span></div>
+    <div class="edu">
+<!-- CV:EDUCATION:START (generated from the Word CV by scripts/update.sh, do not edit by hand) -->
+      <div class="card reveal"><div class="badge">L8</div><div><h5>BSc (Hons) Information Technology</h5><p>CCT College Dublin · Level 8</p></div></div>
+      <div class="card reveal"><div class="badge">L7</div><div><h5>BSc Information Technology</h5><p>CCT College Dublin · Level 7</p></div></div>
+      <div class="card reveal"><div class="badge">ICS</div><div><h5>I.C.S. Computer Science</h5><p>Superior College, Pakistan</p></div></div>
+<!-- CV:EDUCATION:END -->
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact reveal">
+      <h2>Let's build something reliable.</h2>
+      <p>I'm open to DevOps, platform and systems engineering roles. The fastest way to reach me is email.</p>
+      <div class="cta">
+        <a class="btn primary" href="mailto:daud_000@hotmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>daud_000@hotmail.com</a>
+        <a class="btn" href="https://www.linkedin.com/in/1daud1/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="yr">2026</span> Daud Ahmed Butt · Dublin, Ireland · <span class="ok" style="color:var(--accent)">uptime: <span id="uptime">—</span></span></div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // theme toggle (remembered per browser, safely)
+  var root = document.documentElement;
+  try { var t = localStorage.getItem('theme'); if (t) root.setAttribute('data-theme', t); } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+
+  // years / uptime since first IT role (Jan 2021)
+  var start = new Date(2021, 0, 1), now = new Date();
+  var yrs = (now - start) / (365.25*864e5);
+  document.getElementById('yrs').textContent = Math.floor(yrs) + '+';
+  document.getElementById('yr').textContent = now.getFullYear();
+  var days = Math.floor((now - start)/864e5);
+  document.getElementById('uptime').textContent = days.toLocaleString() + ' days';
+
+  // typing roles
+  var roles = ['Systems Administrator | DevOps','Terraform · Ansible · Jenkins','~1,000 VMs, multi-cloud','Microsoft 365 · Intune · Autopilot'];
+  var el = document.getElementById('typed');
+  if (reduce) { el.textContent = roles[0]; }
+  else {
+    var ri=0, ci=0, del=false;
+    (function tick(){
+      var w = roles[ri];
+      el.textContent = w.slice(0, ci);
+      if (!del && ci < w.length) { ci++; setTimeout(tick, 55); }
+      else if (!del) { del = true; setTimeout(tick, 1700); }
+      else if (ci > 0) { ci--; setTimeout(tick, 28); }
+      else { del = false; ri = (ri+1) % roles.length; setTimeout(tick, 300); }
+    })();
+  }
+
+  // terminal
+  var lines = [
+    ['<span class="p">daud@dublin</span>:<span class="c">~</span>$ <span class="w">whoami</span>', 0],
+    ['Systems Administrator | DevOps · Dublin', 1],
+    ['<span class="p">daud@dublin</span>:<span class="c">~</span>$ <span class="w">cat stack.yml</span>', 0],
+    ['<span class="k">fleet:</span>   ~1000 vms', 1],
+    ['<span class="k">cloud:</span>   [aws, gcp, azure, hetzner, linode, upcloud]', 1],
+    ['<span class="k">ci_cd:</span>   [terraform, ansible, jenkins]', 1],
+    ['<span class="k">observe:</span> [icinga, grafana, graylog]', 1],
+    ['<span class="k">endpoint:</span> [intune, autopilot, action1]', 1],
+    ['<span class="p">daud@dublin</span>:<span class="c">~</span>$ <span class="w">git push</span>', 0],
+    ['<span class="k">jenkins:</span> security scan <span class="ok">passed</span> → deploy <span class="ok">ok</span>', 1],
+    
+    ['<span class="p">daud@dublin</span>:<span class="c">~</span>$ <span class="caret"></span>', 1]
+  ];
+  var term = document.getElementById('term');
+  if (reduce) { term.innerHTML = lines.map(function(l){return l[0];}).join('\n'); }
+  else {
+    var i = 0;
+    (function next(){
+      if (i >= lines.length) return;
+      term.innerHTML += (i ? '\n' : '') + lines[i][0];
+      var d = lines[i][1] ? 220 : 650; i++;
+      setTimeout(next, d);
+    })();
+  }
+
+  // reveal on scroll
+  var els = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) { els.forEach(function(e){e.classList.add('in');}); }
+  else {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    }, {threshold:.12});
+    els.forEach(function(e){ io.observe(e); });
+  }
+})();
+</script>
+</body>
+</html>
